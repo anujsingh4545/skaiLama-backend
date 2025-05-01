@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 export const createProjectService = async(title, user)=>{
 
     try {
-        const prevProject = await Project.findOne({title:title});
+        const prevProject = await Project.findOne({title:title, userId:user?._id});
 
         if(prevProject) throw new AppError("Dupicate project name not allowed!", 401);
 
