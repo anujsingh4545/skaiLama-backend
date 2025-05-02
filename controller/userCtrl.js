@@ -75,7 +75,7 @@ export const logoutCtrl = async(req,res,next)=>{
   try {
     const data  = await getUserDetailsService(req.userId);
 
-    res.clearCookie("token", { httpOnly: true, secure: process.env.NODE_ENV === 'production' })
+    res.clearCookie("token", { httpOnly: true, secure: process.env.NODE_ENV === 'production',  sameSite: "None" })
     
     return res.status(201).json({
       success: true,
